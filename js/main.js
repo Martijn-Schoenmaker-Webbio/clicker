@@ -17,6 +17,7 @@ $( document ).ready(function() {
     var pointerAmount = localStorage.getItem('pointerAmount');
   } else {
     localStorage.setItem('pointerAmount', 0)
+    var pointerAmount = 0;
   }
     
   function addCookies(amount){
@@ -32,13 +33,13 @@ $( document ).ready(function() {
   $( ".pointer" ).click(function() {
     addPointer();
   });
-      var test = 0;
+
   function addPointer(){
     localStorage.setItem('pointerAmount', (Number(localStorage.getItem('pointerAmount')) + 1));
     clearInterval(pointerInterval);
     var pointerInterval = setInterval( function() { 
       addCookies(localStorage.getItem('clickGrowth')); 
-    }, (2000 / localStorage.getItem('pointerAmount')) );
+    }, (2000 / pointerAmount) );
   }
   
   function clickAnimation(target, ms){
